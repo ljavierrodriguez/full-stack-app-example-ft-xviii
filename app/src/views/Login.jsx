@@ -18,6 +18,7 @@ function Login() {
     useEffect(() => {
         if(store.currentUser) navigate('/');
     }, [store.currentUser])
+    
     return (
         <div className="container">
             <div className="row">

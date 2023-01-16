@@ -47,7 +47,7 @@ class Profile(db.Model):
             "id": self.id,
             "biopgrafy": self.biography,
             "linkedin": self.linkedin,
-            "github": self.github,
+            "github": self.github
         }
 
     def save(self):
