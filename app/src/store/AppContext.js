@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import getState from "./flux";
 
@@ -13,6 +13,11 @@ const StoreWrapper = ({ children }) => {
             actions: {...state.actions}
         })
     }));
+
+    useEffect(() => {
+        state.actions.checkUser();
+    }, [])
+
     return (
         <AppContext.Provider value={state}>
             {children}

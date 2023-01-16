@@ -6,11 +6,21 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
+    profile = db.relationship("Profile", backref="user", uselist=False)
 
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email
+        }
+    
+    def serialize_profile(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "biography": self.profile.biography,
+            "linkedin": self.profile.linkedin,
+            "github": self.profile.github
         }
 
     def save(self):
